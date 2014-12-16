@@ -5,5 +5,5 @@ package kernels;
  */
 public interface ILogic<DATA,RESULT>
 {
-    public RESULT apply(DATA data);
+    public RESULT apply(DATA[] data);
 }

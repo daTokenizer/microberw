@@ -1,51 +1,23 @@
 package brews;
 
 import kernels.ILogic;
+import infrastracture.events.generators.IEventGenerator;
 
-import javax.xml.transform.stream.StreamSource;
-
-public abstract class GenericBrew
+public abstract class GenericBrew<IN,OUT> implements IEventGenerator<OUT>
 {
-  private StreamSource[] _sources;
 
-  private StreamSender[] _targets;
+  private OUT
 
-  private ILogic _logic;
+  private ILogic<IN,OUT>   _logic;
 
-  public void run() {
-    // resolve sources
-
-    // pull/receive data from different sources
-
-    // resolve logic
-
+  public void brew(IN[] events) {
     // apply logic to data
 
-    // resolve targets
-
-    // send/put data to targets
-
+    return _eventGenerator.generate(_logic.apply(events));
   }
 
-
-  public StreamSource[] getSources()
-  {
-    return _sources;
-  }
-
-  public void setSources(StreamSource[] _sources)
-  {
-    this._sources = _sources;
-  }
-
-  public StreamTarget[] getTargets()
-  {
-    return _targets;
-  }
-
-  public void setTargets(StreamTarget[] _targets)
-  {
-    this._targets = _targets;
+  public OUT generate(){
+    return
   }
 
   public ILogic getLogic()
